@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Competition - CodeCompete</title>
+    <link rel="stylesheet" href="coding-screen.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeCompete</span>
+            </div>
+            <div class="nav-menu">
+                <button class="btn btn-secondary" id="exit-btn">
+                    <i class="fas fa-times"></i> Exit Competition
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Coding Screen -->
+    <div class="coding-container">
+        <!-- Left Panel - Competition Content -->
+        <div class="left-panel">
+            <!-- Competition Header -->
+            <div class="competition-header">
+                <h1>Coding Competition</h1>
+                <div class="competition-info">
+                    <span class="team-name">Team: CodeMasters</span>
+                    <span class="event-name">Event: Algorithm Challenge</span>
+                </div>
+            </div>
+
+            <!-- Question Section -->
+            <div class="question-section">
+                <h2>Problem Statement</h2>
+                <div class="question-content" id="question-content">
+                    <h3>Two Sum</h3>
+                    <p>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</p>
+                    <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+                    
+                    <h4>Example:</h4>
+                    <pre>Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</pre>
+                    
+                    <h4>Constraints:</h4>
+                    <ul>
+                        <li>2 <= nums.length <= 10^4</li>
+                        <li>-10^9 <= nums[i] <= 10^9</li>
+                        <li>-10^9 <= target <= 10^9</li>
+                        <li>Only one valid answer exists.</li>
+                    </ul>
+                </div>
+                <div class="question-meta">
+                    <span class="difficulty">Difficulty: Easy</span>
+                    <span class="time-limit">Time Limit: 2s</span>
+                    <span class="memory-limit">Memory: 256MB</span>
+                </div>
+            </div>
+
+            <!-- Code Editor Section -->
+            <div class="code-editor-section">
+                <div class="editor-header">
+                    <h2>Code Editor</h2>
+                    <div class="language-selector">
+                        <label for="language-select">Language:</label>
+                        <select id="language-select">
+                            <option value="java">Java</option>
+                            <option value="python">Python</option>
+                            <option value="c">C</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="code-editor-container">
+                    <textarea id="code-editor" placeholder="Write your code here..."></textarea>
+                </div>
+                
+                <div class="editor-actions">
+                    <button class="btn btn-secondary" id="run-code-btn">
+                        <i class="fas fa-play"></i> Run Code
+                    </button>
+                    <button class="btn btn-primary" id="submit-code-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Solution
+                    </button>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="output-section">
+                <div class="output-header">
+                    <h2>Output</h2>
+                    <button class="btn btn-sm btn-secondary" id="clear-output-btn">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="output-content" id="output-content">
+                    <div class="output-placeholder">
+                        <i class="fas fa-terminal"></i>
+                        <p>Run your code to see the output here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Timer -->
+        <div class="right-panel">
+            <div class="timer-container">
+                <div class="timer-header">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time Remaining</h3>
+                </div>
+                <div class="timer-display" id="timer-display">
+                    <span class="hours" id="hours">01</span>:
+                    <span class="minutes" id="minutes">30</span>:
+                    <span class="seconds" id="seconds">00</span>
+                </div>
+                <div class="timer-status" id="timer-status">
+                    Competition in progress
+                </div>
+            </div>
+
+            <!-- Question Navigation -->
+            <div class="question-nav">
+                <h3>Questions</h3>
+                <div class="question-list">
+                    <div class="question-item active" data-question="1">
+                        <span class="question-number">1</span>
+                        <span class="question-title">Two Sum</span>
+                        <span class="question-status">Current</span>
+                    </div>
+                    <div class="question-item" data-question="2">
+                        <span class="question-number">2</span>
+                        <span class="question-title">Valid Parentheses</span>
+                        <span class="question-status">Not Started</span>
+                    </div>
+                    <div class="question-item" data-question="3">
+                        <span class="question-number">3</span>
+                        <span class="question-title">Longest Substring</span>
+                        <span class="question-status">Not Started</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Time Up Modal -->
+    <div id="time-up-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-clock"></i>
+                <h2>Time's Up!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for participating in the coding competition!</p>
+                <p>Your code has been automatically submitted and is now being checked by our system.</p>
+                <p>We will update you by email and you can also check the results in the mobile app.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="close-modal-btn">
+                    <i class="fas fa-check"></i> Got it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="coding-screen.js"></script>
+</body>
+</html>
+
