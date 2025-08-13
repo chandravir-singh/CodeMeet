@@ -1,89 +1,264 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCompete - Coding Competition Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeCompete</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                <a href="#profile" class="nav-link" id="profile-link" style="display: none;">Profile</a>
+                <button class="auth-btn" id="login-btn">Login</button>
+                <button class="auth-btn" id="logout-btn" style="display: none;">Logout</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.1.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.1.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Welcome to CodeCompete</h1>
+                <p>Join the ultimate coding competition platform. Test your skills, compete with the best, and climb the leaderboard!</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="get-started-btn">Get Started</button>
+                    <button class="btn btn-secondary" id="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="code-animation">
+                    <div class="code-line">function compete() {</div>
+                    <div class="code-line">  let skills = "awesome";</div>
+                    <div class="code-line">  return "Winner!";</div>
+                    <div class="code-line">}</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2>Available Events</h2>
+            <div class="events-grid" id="events-grid">
+                <!-- Events will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Competition Section -->
+    <section id="competition" class="competition-section" style="display: none;">
+        <div class="container">
+            <div class="competition-header">
+                <h2 id="event-title">Event Title</h2>
+                <div class="team-info">
+                    <span class="team-name" id="team-name">Team: Loading...</span>
+                    <span class="event-name" id="event-name">Event: Loading...</span>
+                </div>
+            </div>
+            
+                            <div class="competition-content">
+                    <div class="competition-header">
+                        <h2 id="event-title">Event Title</h2>
+                        <div class="team-info">
+                            <span class="team-name" id="team-name">Team: Loading...</span>
+                            <span class="event-name" id="event-name">Event: Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="competition-main">
+                        <div class="competition-panels">
+                        <div class="question-panel">
+                            <h3>Problem Statement</h3>
+                            <div class="question-content-scroll" id="question-content">
+                                <!-- Question content will be loaded here -->
+                            </div>
+                            <div class="question-meta">
+                                <span class="difficulty" id="difficulty">Difficulty: Medium</span>
+                                <span class="time-limit" id="time-limit">Time Limit: 2s</span>
+                                <span class="memory-limit" id="memory-limit">Memory: 256MB</span>
+                            </div>
+                        </div>
+                        
+                        <div class="code-editor-panel">
+                            <div class="editor-header">
+                                <h3>Code Editor</h3>
+                                <div class="language-selector">
+                                    <select id="language-select">
+                                        <option value="java">Java</option>
+                                        <option value="python">Python</option>
+                                        <option value="c">C</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="code-editor-scroll">
+                                <textarea id="code-editor" placeholder="Write your code here..."></textarea>
+                            </div>
+                            
+                            <div class="editor-actions">
+                                <button class="btn btn-secondary" id="run-code-btn">
+                                    <i class="fas fa-play"></i> Run Code
+                                </button>
+                                <button class="btn btn-primary" id="submit-code-btn">
+                                    <i class="fas fa-paper-plane"></i> Submit Solution
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="output-panel" id="output-panel">
+                            <div class="output-header">
+                                <h3>Output</h3>
+                                <button class="btn btn-sm btn-secondary" id="clear-output-btn">
+                                    <i class="fas fa-trash"></i> Clear
+                                </button>
+                            </div>
+                            <div class="output-content" id="output-content">
+                                <!-- Output will be displayed here -->
+                                <div class="output-placeholder">
+                                    <i class="fas fa-terminal"></i>
+                                    <p>Run your code to see the output here</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Countdown Timer -->
+                        <div class="countdown-timer" id="countdown-timer">
+                            <div class="timer-header">
+                                <i class="fas fa-clock"></i>
+                                <h3>Time Remaining</h3>
+                            </div>
+                            <div class="timer-display" id="timer-display">
+                                <span class="hours" id="hours">01</span>:
+                                <span class="minutes" id="minutes">30</span>:
+                                <span class="seconds" id="seconds">00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="leaderboard-section">
+        <div class="container">
+            <h2>Leaderboard</h2>
+            <div class="leaderboard-table" id="leaderboard-table">
+                <!-- Leaderboard will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Dialog -->
+    <div id="profile-dialog" class="modal">
+        <div class="modal-content profile-modal">
+            <span class="close" id="close-profile">&times;</span>
+            <h2>User Profile</h2>
+            <div class="profile-content">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img id="profile-image" src="https://via.placeholder.com/100x100/007bff/ffffff?text=U" alt="Profile Image" onerror="this.src='https://via.placeholder.com/100x100/007bff/ffffff?text=U'">
+                    </div>
+                    <div class="profile-basic-info">
+                        <h3 id="profile-name">Loading...</h3>
+                        <p id="profile-email">Loading...</p>
+                    </div>
+                </div>
+                <div class="profile-details-grid">
+                    <div class="detail-item">
+                        <label>Name:</label>
+                        <span id="detail-name">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Email:</label>
+                        <span id="detail-email">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+            
+            <div class="tab-content active" id="login-tab">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+            
+            <div class="tab-content" id="register-tab">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-team">Team Name</label>
+                        <input type="text" id="register-team" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Demo Data -->
+    <script src="demo-data.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
