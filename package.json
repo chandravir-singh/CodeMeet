@@ -1,0 +1,20 @@
+{
+  "name": "coding-website",
+  "version": "1.0.0",
+  "description": "A modern web-based coding competition platform built with HTML, CSS, and JavaScript.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandravir-singh/CodeMeet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandravir-singh/CodeMeet/issues"
+  },
+  "homepage": "https://github.com/chandravir-singh/CodeMeet#readme"
+}
